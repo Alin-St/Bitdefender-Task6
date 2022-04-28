@@ -1,0 +1,7 @@
+﻿  get_error_message.cpp
+  main.cpp
+  run_on_startup.cpp
+  ServerConsole.cpp
+  test_run_on_startup.cpp
+  Generating Code...
+  Server.vcxproj -> C:\Users\gstanciu\source\repos\Task6\x64\Debug\Server.exe
