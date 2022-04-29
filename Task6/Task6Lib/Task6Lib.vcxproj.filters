@@ -10,31 +10,85 @@
     <Filter Include="utilities\Sources">
       <UniqueIdentifier>{0bcb596a-3123-4e2f-b679-89a4813423fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="socket">
+    <Filter Include="sockets">
       <UniqueIdentifier>{b84c6817-37bf-4457-98c6-3170dda68b33}</UniqueIdentifier>
     </Filter>
-    <Filter Include="socket\Headers">
+    <Filter Include="sockets\Headers">
       <UniqueIdentifier>{404f6cab-561f-44f3-8293-8530fd18b2b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="socket\Sources">
+    <Filter Include="sockets\Sources">
       <UniqueIdentifier>{7924f2b9-e310-4f11-ae41-d717c8a064fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pipes">
+      <UniqueIdentifier>{13e1f26d-42d3-4ccf-896b-cdb21bf0bfe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pipes\Headers">
+      <UniqueIdentifier>{7babbf57-81c3-4413-b7d5-50161de651b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pipes\Sources">
+      <UniqueIdentifier>{f947ad6a-9d29-48d2-92e2-cade0d714e06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared_memory">
+      <UniqueIdentifier>{e71a39cb-13f9-4cbe-9e1a-ac1c31160605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared_memory\Headers">
+      <UniqueIdentifier>{ad471382-f488-4897-a43d-7cf5fca4e806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared_memory\Sources">
+      <UniqueIdentifier>{5ed6a20d-dc60-48f2-ad3c-1b6871ffd585}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{241a3600-05d8-4ad8-b5e4-824e06a1d9bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\Headers">
+      <UniqueIdentifier>{c853d451-663f-4aaf-88a8-48e1a9fb550a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\Sources">
+      <UniqueIdentifier>{0a4c75bd-d33c-4481-a57e-99db452815f8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="task6lib.h" />
-    <ClInclude Include="get_error_message.h">
+    <ClInclude Include="TcpServer.h">
+      <Filter>sockets\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="sockets.h">
+      <Filter>sockets\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
       <Filter>utilities\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="TcpServer.h">
-      <Filter>socket\Headers</Filter>
+    <ClInclude Include="pipes.h">
+      <Filter>pipes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="shared_memory.h">
+      <Filter>shared_memory\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tests.h">
+      <Filter>tests\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RaiiHKey.h">
+      <Filter>utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemException.h">
+      <Filter>utilities\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="get_error_message.cpp">
+    <ClCompile Include="TcpServer.cpp">
+      <Filter>sockets\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_run_on_startup.cpp">
+      <Filter>tests\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility_runOnStartup.cpp">
       <Filter>utilities\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TcpServer.cpp">
-      <Filter>socket\Sources</Filter>
+    <ClCompile Include="SystemException.cpp">
+      <Filter>utilities\Sources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

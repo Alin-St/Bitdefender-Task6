@@ -1,33 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="core">
-      <UniqueIdentifier>{b33783e2-ad77-4a36-97f2-ebd175287aac}</UniqueIdentifier>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{81dd0922-8e05-4cad-bf57-e2cc1830325b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ui">
-      <UniqueIdentifier>{5674c526-fd5e-43b4-9781-a3bec7f65ef0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ui\Headers">
-      <UniqueIdentifier>{b0ad849b-7a24-4b92-99a1-dc1c7af784ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ui\Sources">
-      <UniqueIdentifier>{b1b11ae9-ac45-4e66-a54a-341eaf7a1af1}</UniqueIdentifier>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{62aa5e17-c6f0-4387-9e06-40d09781ff6e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>core</Filter>
+    <ClCompile Include="client.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="ClientConsole.cpp">
-      <Filter>ui\Sources</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ui.h">
-      <Filter>ui\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="ClientConsole.h">
-      <Filter>ui\Headers</Filter>
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

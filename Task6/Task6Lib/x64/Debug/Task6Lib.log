@@ -1,2 +1,6 @@
-﻿  get_error_message.cpp
-  Task6Lib.vcxproj -> C:\Users\gstanciu\source\repos\Task6\x64\Debug\Task6Lib.lib
+﻿  SystemException.cpp
+  TcpServer.cpp
+  test_run_on_startup.cpp
+  Utility_runOnStartup.cpp
+  Generating Code...
+  Task6Lib.vcxproj -> C:\Users\gstanciu\Alin\Projects\task6\Task6\x64\Debug\Task6Lib.lib

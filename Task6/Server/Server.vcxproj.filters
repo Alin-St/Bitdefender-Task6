@@ -1,57 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="core">
-      <UniqueIdentifier>{169ce06d-6d8a-41a9-a3db-7cc6a38a2f69}</UniqueIdentifier>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{9912ae4c-51db-45b9-97b5-01e420d8af26}</UniqueIdentifier>
     </Filter>
-    <Filter Include="tests">
-      <UniqueIdentifier>{ce84ca3f-f286-410b-badd-f58645230a03}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="tests\Headers">
-      <UniqueIdentifier>{ba63fc88-5667-447e-96f3-b4bd99af3708}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="tests\Sources">
-      <UniqueIdentifier>{c006712c-5dcc-49ca-984d-5a736c618a29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ui">
-      <UniqueIdentifier>{cb4b7c8b-f205-4e5e-8167-eb92ac2460cb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ui\Headers">
-      <UniqueIdentifier>{112e2e01-896c-42fd-b9ff-8ffa1fa049f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ui\Sources">
-      <UniqueIdentifier>{97369930-3e62-45f8-aa2e-3bf607a75503}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="run_on_startup">
-      <UniqueIdentifier>{08f5f042-d3cc-4518-a9a8-3af4b741cb05}</UniqueIdentifier>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{d5bfdb2b-54a4-4472-8058-95514f4dc399}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>core</Filter>
-    </ClCompile>
-    <ClCompile Include="test_run_on_startup.cpp">
-      <Filter>tests\Sources</Filter>
+    <ClCompile Include="server.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="ServerConsole.cpp">
-      <Filter>ui\Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="run_on_startup.cpp">
-      <Filter>run_on_startup</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tests.h">
-      <Filter>tests\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="ui.h">
-      <Filter>ui\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="ServerConsole.h">
-      <Filter>ui\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="run_on_startup.h">
-      <Filter>run_on_startup</Filter>
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

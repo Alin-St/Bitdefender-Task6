@@ -1,14 +1,12 @@
 #include "ServerConsole.h"
-#include "utilities.h"
+#include "../Task6Lib/task6lib.h"
 #include <iostream>
 
-ServerConsole::ServerConsole(const wchar_t* appPath) : applicationPath(appPath) {}
+ServerConsole::ServerConsole(const std::wstring& appPath) : applicationPath(appPath) {}
 
-int ServerConsole::run()
+void ServerConsole::run()
 {
-	//uiSetProgramToRunOnStartup();
-
-	return 0;
+	uiSetProgramToRunOnStartup();
 }
 
 void ServerConsole::uiSetProgramToRunOnStartup()
@@ -20,21 +18,24 @@ void ServerConsole::uiSetProgramToRunOnStartup()
 	constexpr const wchar_t* APP_NAME = L"Task6";
 
 	bool pathMatches{}, success = false;
-	if (runProgramOnStartup(APP_NAME, this->applicationPath.c_str(), true, false, &pathMatches))
+	if (Utility::runProgramOnStartup(APP_NAME, this->applicationPath.c_str(), true, false, &pathMatches))
 		success = true;
-	else {
+	else
+	{
 		if (pathMatches)
 			std::cout << "Program was already set to run on startup.\n";
-		else {
+		else
+		{
 			bool resetRegValue{};
 			std::cout << "A registry value with the name Task6 already found; "
 				"do you want to delete it and try setting the program to run on startup again? (1/0): ";
 			std::cin >> resetRegValue;
 
-			if (resetRegValue) {
-				stopRunningProgramOnStartup(APP_NAME, nullptr, true, false);
+			if (resetRegValue)
+			{
+				Utility::stopRunningProgramOnStartup(APP_NAME, nullptr, true, false);
 				std::cout << "Registry value with the same name deleted.\n";
-				success = runProgramOnStartup(APP_NAME, this->applicationPath.c_str(), true, false);
+				success = Utility::runProgramOnStartup(APP_NAME, this->applicationPath.c_str(), true, false);
 			}
 		}
 	}

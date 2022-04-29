@@ -1,8 +1,7 @@
 #include "ClientConsole.h"
 #include <iostream>
 
-int ClientConsole::run()
+void ClientConsole::run()
 {
-	std::cout << "Hello world!";
-	return 0;
+	std::cout << "Hello world!\n";
 }

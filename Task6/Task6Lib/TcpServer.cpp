@@ -1,5 +1,5 @@
 #include "TcpServer.h"
-#include "get_error_message.h"
+#include "SystemException.h"
 #include <ws2tcpip.h>
 #include <iphlpapi.h>
 #include <MSWSock.h>
@@ -12,7 +12,7 @@ TcpServer::TcpServer(int port) : _port(port)
 	WSADATA wsaData{};
 	int errCode = 0;
 	if (errCode = WSAStartup(MAKEWORD(2, 2), &wsaData))
-		throw std::runtime_error(getSystemErrorMessage((DWORD)errCode));
+		throw SystemException((DWORD)errCode);
 }
 
 void TcpServer::start(int backlog)
@@ -33,7 +33,7 @@ void TcpServer::start(int backlog)
 
 	INT result = getaddrinfo(nullptr, portStr.c_str(), &hints, &addressInfo);
 	if (result != 0)
-		throw std::runtime_error(getSystemErrorMessage((DWORD)WSAGetLastError()));
+		throw SystemException((DWORD)WSAGetLastError());
 
 	if (addressInfo == nullptr)
 		throw std::runtime_error("getaddrinfo returned a null adress.");
@@ -42,7 +42,7 @@ void TcpServer::start(int backlog)
 	this->_listener = socket(addressInfo->ai_family, addressInfo->ai_socktype, addressInfo->ai_protocol);
 	if (this->_listener == INVALID_SOCKET) {
 		freeaddrinfo(addressInfo);
-		throw std::runtime_error(getSystemErrorMessage((DWORD)WSAGetLastError()));
+		throw SystemException((DWORD)WSAGetLastError());
 	}
 
 	// Setup the TCP listening socket.
@@ -51,7 +51,7 @@ void TcpServer::start(int backlog)
 		freeaddrinfo(addressInfo);
 		closesocket(this->_listener);
 		this->_listener = INVALID_SOCKET;
-		throw std::runtime_error(getSystemErrorMessage((DWORD)WSAGetLastError()));
+		throw SystemException((DWORD)WSAGetLastError());
 	}
 
 	freeaddrinfo(addressInfo);
@@ -61,7 +61,7 @@ void TcpServer::start(int backlog)
 	if (result2 != 0) {
 		closesocket(this->_listener);
 		this->_listener = INVALID_SOCKET;
-		throw std::runtime_error(getSystemErrorMessage((DWORD)WSAGetLastError()));
+		throw SystemException((DWORD)WSAGetLastError());
 	}
 }
 
@@ -72,5 +72,5 @@ void TcpServer::accept()
 
 	SOCKET client = INVALID_SOCKET;
 
-	AcceptEx(this->_listener, client)
+	//AcceptEx(this->_listener, client)
 }

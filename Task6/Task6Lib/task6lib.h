@@ -1,3 +1,7 @@
 #pragma once
 
-#include "get_error_message.h"
+#include "tests.h"
+#include "shared_memory.h"
+#include "pipes.h"
+#include "sockets.h"
+#include "utilities.h"

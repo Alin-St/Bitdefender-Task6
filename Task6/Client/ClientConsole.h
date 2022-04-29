@@ -3,5 +3,5 @@
 class ClientConsole
 {
 public:
-	int run();
+	void run();
 };

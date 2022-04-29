@@ -19,13 +19,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="get_error_message.h" />
+    <ClInclude Include="pipes.h" />
+    <ClInclude Include="RaiiHKey.h" />
+    <ClInclude Include="shared_memory.h" />
+    <ClInclude Include="sockets.h" />
+    <ClInclude Include="SystemException.h" />
     <ClInclude Include="task6lib.h" />
     <ClInclude Include="TcpServer.h" />
+    <ClInclude Include="tests.h" />
+    <ClInclude Include="utilities.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="get_error_message.cpp" />
+    <ClCompile Include="SystemException.cpp" />
     <ClCompile Include="TcpServer.cpp" />
+    <ClCompile Include="test_run_on_startup.cpp" />
+    <ClCompile Include="Utility_runOnStartup.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
