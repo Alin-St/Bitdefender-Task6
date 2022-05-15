@@ -1,0 +1,13 @@
+Sunt 3 proiecte:
+1) Client: Un Console Application pentru Client (contine doar UI-ul, doar logica de UI)
+2) Server: Un Console Application pentru Server (contine doar UI-ul, doar logica de UI)
+3) Task6Lib: O librarie statica in care e scris aproape tot codul pentru Server + Client, in afara de UI
+
+3) Task6Lib:
+Codul este impartit in 6 module principale:
+    -pipes: contine un pipe server / pipe client si codul legat de pipe-uri
+    -sockets: contine un socket server / socket client si codul legat de socket-uri
+    -shared_memory: contine un shared memory server / shared memory client si codul legat de shared memory
+    -utilities: contine cod ajutator precum clasele RAII, exceptii custom, functiile care asigura permanenta la reboot
+    -tests: contine teste pentru oricare dintre restul modulelor
+    -controller: contine un server + client de pipe-uri, socket-uri si shared memory cu toata logica care se cere in Task 6 (reprezinta tot ce se cere in Task 6 in afara de UI)

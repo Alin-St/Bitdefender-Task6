@@ -17,6 +17,8 @@ public:
 
 	virtual const char* what() const noexcept override { return this->messg.c_str(); }
 
+	DWORD errorCode() const noexcept { return errCode; };
+
 	/// <summary> Gets the error message using FormatMessageA() with FORMAT_MESSAGE_FROM_SYSTEM flag. </summary>
 	/// <param name="dwErrorCode"> The Win32 error code you want to get the message for. </param>
 	/// <returns> The string containing the requested message or an adequate message if the function fails. </returns>

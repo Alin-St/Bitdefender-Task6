@@ -6,7 +6,7 @@ ServerConsole::ServerConsole(const std::wstring& appPath) : applicationPath(appP
 
 void ServerConsole::run()
 {
-	uiSetProgramToRunOnStartup();
+	//uiSetProgramToRunOnStartup();
 }
 
 void ServerConsole::uiSetProgramToRunOnStartup()

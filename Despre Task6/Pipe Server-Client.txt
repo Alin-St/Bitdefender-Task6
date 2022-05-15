@@ -1,0 +1,33 @@
+PIPE SERVER
+
+Se creaza avand un numar specific de pipe-uri server cu acelasi nume. Toate pipe-urile sunt asociate cu un iocp dat, cu acelasi completion key. Userul are responsabilitatea de a scoate operatiile din iocp, de a se folosi de completion key sa verifice daca operatiile provin de la server, iar in caz afirmativ de a pasa informatiile primite serverului prin functia service(). Serverul va prelucra informatiile date, isi va updata structura interna daca e nevoie si va returna un obiect care descrie ce s-a intamplat.
+
+Serverul este THREAD SAFE.
+
+Functionalitati server:
+-Constructor: creaza pipe-urile, structurile overlapped, critical section-ul pentru fiecare client
+-connectInstance: incepe sa conecteze un anumit pipe neconectat cu un client
+-readInstance: incepe sa citeasca de pe un anumit pipe care e conectat
+-service: prelucreaza o operatie de pe iocp si returneaza o descriere cu ce s-a intamplat
+-disconnectInstance: deconecteaza un anumit pipe; daca pipe-ul avea operatii pending, va fi marcat cu "in curs de inchidere" pana ce operatiile respective sunt transmise in service, apoi va fi marcat ca neconectat; se foloseste functia DisconnectNamedPipe daca pipe-ul este conectat, altfel se apeleaza CancelIoEx pentru a opri conectarea
+-getPipeState: returneaza thread-safe stadiul in care se afla un anumit pipe (conectat / neconectat, a inceput sa citeasca / nu a inceput, etc.)
+-Destructor: inchide si sterge toate pipe-urile, overlapped-urile, crit. sect.. Operatiile din iocp cu completion key-ul unui server distrus trebuie ignorate
+
+
+
+PIPE CLIENT
+
+Spre deosebire de server, clientul nu este asociat unui iocp. In schimb, operatiile se fac folosindu-se de overlapped + eventuri. Userul poate cere eventul daca doreste.
+
+Clientul este THREAD SAFE.
+
+Functionalitati client:
+-Constructor: Initializeaza overlapped-urile + critical section
+-open: se conecteaza la un pipe cu numele dat
+-write: daca e conectat, incepe sa scrie pe pipe
+-flushWriteBuffer: daca vrei sa te asiguri ca datele au fost trimise inainte sa inchizi clientul
+-service: asteapta sa se termine o operatie async, apoi returneaza un obiect care descrie ce s-a intamplat
+-close: se deconecteaza
+-Destructor: inchide pipe-ul si elibereaza resursele.
+
+NOTA IMPORTANTA: Nici serverul, nici clientul nu isi schimba statusul pipe-urilor decat cand se apeleaza una dintre functiile membre si user-ul este informat de aceasta schimbare (fie printr-un async result al functiei service, fie prin faptul ca o functie cum e cea de conectare a fost apelata cu succes). O consecinta a acestui comportament este ca daca pipe serverul incearca, de exemplu, sa trimita niste date unui client, operatia va esua daca clientul este marcat ca fiind in curs de conectare, iar clientul poate fi marcat in curs de conectare chiar daca el este defapt conectat, dar nu s-a apelat inca functia service pentru a prelucra completarea operatiei de conectare.

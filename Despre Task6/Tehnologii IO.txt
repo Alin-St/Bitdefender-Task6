@@ -1,0 +1,22 @@
+Despre Pipe Server / Client:
+
+1) O prima varianta cu care ar putea fi implementat serverul este cu synchrounous I/O.
+-nu este o varianta foarte flexibila
+-nu este scalable (pentru fiecare client trebuie creat un thread, nu este optimizat pentru multi clienti)
+-necesita multa sincronizare intre thread-uri
+
+2) Alta varianta este folosind OVERLAPPED cu event-uri.
+-este o varianta mai flexibila
+-nu se poate astepta dupa mai mult de 64 de operatii simultan, decat daca se foloseste un sistem de thread-uri
+
+3) Folosind I/O Completion Ports.
+-este o varianta foarte performanta
+-iocp-ul nu are limita la numarul de operatii asincron simultane
+-se poate folosi o arhitectura cu N thread-uri active si M thread-uri in total (M > N). Cele M thread-uri raman intr-un loop in care prelucreaza operatiile async folosind GetQueuedCompletionStatus, dar iocp-ul va permite doar N thread-uri active in acelasi timp. Thread-urile active vor fi alese printre cele care au fost active recent (pentru a isi pastra cache-ul proaspat). In felul acesta se poate atinge performanta maxima.
+
+4) Folosing I/O Completion Routines.
+-este potrivita mai mult pentru aplicatii event driven
+-posibil sa fie mai greu de implementat, mai multa bataie de cap
+
+Pentru server s-a folosit iocp, pentru performanta maxima si numarul mare de operatii asincron.
+Pentru client s-a folosit OVERLAPPED cu event-uri, intrucat un client are un numar mic de operatii simultane.

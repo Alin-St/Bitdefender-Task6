@@ -4,6 +4,16 @@
 
 int wmain(int argc, wchar_t* argv[])
 {
+	try
+	{
+		// PipeServer pipeServer("\\\\.\\pipe\\Task6_PipeServer", 0x100);
+
+		InPipeServer pipeServer("\\\\.pipe\\Task6_PipeServer", 0x100, INVALID_HANDLE_VALUE, 0x01);
+	}
+	catch (...) {}
+
+	return 0;
+
 	// Run tests from Task6 library.
 	test_run_on_startup(argv[0]);
 

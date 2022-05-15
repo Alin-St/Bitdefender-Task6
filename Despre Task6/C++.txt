@@ -1,0 +1,14 @@
+Avand in vedere ca implementarea este in C++ sunt o serie de concepte care au fost aplicate C++ style, ci nu C style.
+
+    EXCEPTII:
+In loc de a returna un error code in fiecare functie, sau a implementa propriul GetLastError sunt folosite exceptiile. Fiecare exceptie aruncata deriva din std::exception. Este folosita un tip de exceptie custom pentru erorile din Win32 numita SystemException, care primeste in constructor un Win32 error code si furnizeaza un mesaj adecvat pe baza acelui error code folosing FormatMessageA. In general, o exceptie reprezinta un caz exceptional, in care acea functie a esuat. Se evita verificarea motivului pentru care a esuat si extinderea logicii aplicatiei prin exceptii.
+
+   RAII (Resource Acquisition Is Initialization):
+Prin introducerea exceptiilor se introduce pericolul ca o functie care se foloseste de resurse din Winapi care trebuie eliberate, sa se termine prematur cu o exceptie, inainte sa elibereze resursele. Pentru a evita aceasta problema se foloseste RAII. Fiecare resursa este incapsulata intr-un obiect, care cand este distrus elibreaza resursa. Inclusiv resursele dintr-o clasa sunt incapsulate in acelasi tip de obiect. De exemplu, un obiect de tip RaiiHandle este ca si un HANDLE, dar are si responsabilitatea de a apela CloseHandle cand este distrus. In felul acesta, se poate arunca exceptie si returna din orice loc, deoarece destructorii obiectelor se vor ocupa sa fie eliberate toate resursele.
+
+Clase RAII:
+-RaiiHandle (similar cu HANDLE)
+-RaiiHKey (similar cu HKEY)
+-RaiiOverlapped (similar cu OVERLAPPED)
+-RaiiCriticalSection (similar cu CRITICAL_SECTION)
+-RaiiLock (are rolul de a accesa un CRITICAL_SECTION / Mutex cand este construit si a il elibera cand e distrus)

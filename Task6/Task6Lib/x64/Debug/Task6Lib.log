@@ -1,4 +1,14 @@
-﻿  SystemException.cpp
+﻿  InPipeServer.cpp
+  OutPipeClient.cpp
+  PipeClient.cpp
+  PipeServer.cpp
+  RaiiCriticalSection.cpp
+  RaiiHandle.cpp
+  RaiiHKey.cpp
+  RaiiIndexedOverlapped.cpp
+  RaiiLock.cpp
+  RaiiOverlapped.cpp
+  SystemException.cpp
   TcpServer.cpp
   test_run_on_startup.cpp
   Utility_runOnStartup.cpp

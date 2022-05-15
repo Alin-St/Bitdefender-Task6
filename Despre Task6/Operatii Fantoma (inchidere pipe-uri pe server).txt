@@ -1,0 +1,11 @@
+OPERATII FANTOMA PE IOCP
+
+Cand vrei sa inchizi un pipe iti raman niste operatii fantoma in iocp (read, write poate si connect). Operatiile fantoma vor avea un pointer la OVERLAPPED-ul folosit. Daca pipe-ul a fost reconnectat inainte sa fie citite operatiile fantoma din iocp (si prelucrate) si a fost folosit acelasi OVERLAPPED, cand vor fi citite operatiile fantoma nu se stie daca ele chiar sunt operatii fantoma (si trebuie ignorate) sau read / write pentru noua conexiune a esuat (poate se pot distinge op. fantoma prin eroarea pe care o au, care indica ca a fost inchis pipe-ul, dar nu pare o idee buna + op. fantoma nu se termina neaparat cu eroare, daca au fost citite din iocp inainte de inchiderea pipe-ului).
+
+Operatie fantoma = operatie de read / write / connect neprelucrata inca, dupa inchiderea unui pipe.
+
+Solutie 1:
+Cand se inchide pipe-ul, daca mai sunt operatii fantoma ramase nu se va reutiliza OVERLAPPED-ul lor. Prin extindere se poate marca OVERLAPPED-ul ca fiind fantoma. Cand este prelucrata o operatie din iocp care are un pointer la un OVERLAPPED fantoma se va sterge OVERLAPPED-ul fantoma din memorie si nimic altceva.
+
+Solutie 2 (varianta aleasa):
+Pipe-ul care a fost inchis, dar mai are operatii fantoma va fi marcat cu DISCONNECTING, dar si cu READING, WRITING sau CONNECTING in functie de ce operatii fantoma mai are de prelucrat. Un pipe care mai are operatii fantoma de prelucrat nu se poate reconecta.

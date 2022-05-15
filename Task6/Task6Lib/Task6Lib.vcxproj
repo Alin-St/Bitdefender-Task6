@@ -19,8 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InPipeServer.h" />
+    <ClInclude Include="OutPipeClient.h" />
     <ClInclude Include="pipes.h" />
+    <ClInclude Include="PipeState.h" />
+    <ClInclude Include="RaiiCriticalSection.h" />
+    <ClInclude Include="RaiiHandle.h" />
     <ClInclude Include="RaiiHKey.h" />
+    <ClInclude Include="RaiiIndexedOverlapped.h" />
+    <ClInclude Include="RaiiLock.h" />
+    <ClInclude Include="RaiiOverlapped.h" />
     <ClInclude Include="shared_memory.h" />
     <ClInclude Include="sockets.h" />
     <ClInclude Include="SystemException.h" />
@@ -31,6 +39,14 @@
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="InPipeServer.cpp" />
+    <ClCompile Include="OutPipeClient.cpp" />
+    <ClCompile Include="RaiiCriticalSection.cpp" />
+    <ClCompile Include="RaiiHandle.cpp" />
+    <ClCompile Include="RaiiHKey.cpp" />
+    <ClCompile Include="RaiiIndexedOverlapped.cpp" />
+    <ClCompile Include="RaiiLock.cpp" />
+    <ClCompile Include="RaiiOverlapped.cpp" />
     <ClCompile Include="SystemException.cpp" />
     <ClCompile Include="TcpServer.cpp" />
     <ClCompile Include="test_run_on_startup.cpp" />

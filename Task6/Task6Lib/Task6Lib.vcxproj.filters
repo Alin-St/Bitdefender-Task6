@@ -76,6 +76,30 @@
     <ClInclude Include="SystemException.h">
       <Filter>utilities\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="RaiiHandle.h">
+      <Filter>utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PipeState.h">
+      <Filter>pipes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RaiiIndexedOverlapped.h">
+      <Filter>utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InPipeServer.h">
+      <Filter>pipes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OutPipeClient.h">
+      <Filter>pipes\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RaiiCriticalSection.h">
+      <Filter>utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RaiiLock.h">
+      <Filter>utilities\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RaiiOverlapped.h">
+      <Filter>utilities\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TcpServer.cpp">
@@ -88,6 +112,30 @@
       <Filter>utilities\Sources</Filter>
     </ClCompile>
     <ClCompile Include="SystemException.cpp">
+      <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RaiiHandle.cpp">
+      <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RaiiHKey.cpp">
+      <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RaiiIndexedOverlapped.cpp">
+      <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="InPipeServer.cpp">
+      <Filter>pipes\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="OutPipeClient.cpp">
+      <Filter>pipes\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RaiiCriticalSection.cpp">
+      <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RaiiLock.cpp">
+      <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RaiiOverlapped.cpp">
       <Filter>utilities\Sources</Filter>
     </ClCompile>
   </ItemGroup>

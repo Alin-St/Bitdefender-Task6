@@ -1,0 +1,50 @@
+Cand asociezi un handle cu un iocp, fiecare operatie async de pe handle-ul acela, cand se termina va genera un pachet pe iocp format din:
+-numarul de bytes transferati
+-completion key
+-pointer la structura overlapped folosita
+
+Pentru a identifica handle-ul a carui operatie s-a terminat se poate folosi completion key-ul. Dar daca pe acelasi handle sunt pornite mai multe operatii async, singura metoda de a identifica ce operatie async s-a completat e folosind pointerul la structura overlapped.
+
+Exemplu:
+-completion key = idul / indexul handlelului folosit (sau pointer la o structura care contine date despre handle)
+-Pentru a afla ce operatie s-a terminat, se poate itera prin toate stucturile overlapped folosite de handlelul acela in momentul respectiv pana cand pointerul se potriveste cu cel dat
+
+Pointerul structurii overlapped defapt se poate folosi si pentru a afla a carui handle ii apartine operatia, fara a mai fi nevoie de completion key deloc.
+
+Varianta 1:
+Se construieste un map intre pointerele structurilor overlapped si un index / id / pointer la structura care contine date despre handle.
+
+Varianta 2 (varianta aleasa):
+In loc de a face map, se poate extinde structura overlapped cu ce date se doreste.
+
+*Modul 1 de extindere a structurii OVERLAPPED (varianta aleasa):
+Se construieste un char array de sizeof(OVERLAPPED) + sizeof(CustomData) bytes. La apelarea unei functii async se transmite pointerul structurii overlapped ca fiind inceputul array-ului. Cand se scoate un pachet din iocp, pentru a face rost de datele custom se poate aduna pointerul structurii overlapped cu sizeof(OVERLAPPED) si se va obtine un pointer la datele custom.
+
+Exemplu:
+    typedef int CustomData;
+    
+    // Declararea overlapped-ului:
+    char extendedOverlapped[sizeof(OVERLAPPED) + sizeof(CustomData)] = { 0 };
+    
+    // Apelarea functiei async:
+    WriteFile(hFile, lpBuffer, ..., ..., (OVERLAPPED*) extendedOverlapped);
+
+    // Scoaterea unui pachet din iocp
+    OVERLAPPED* lpOverlapped;
+    GetQueuedCompletionStatus(hCompPort, &bytesTransferred, &compKey, &lpOverlapped, ...);
+    CustomData* lpCustomData = (CustomData*) (lpOverlapped + 1);
+    CustomData customData = *lpCustomData;
+
+*Modul 2 de extindere a structurii OVERLAPPED:
+Se declara o structura (OlExtended) care are ca primul membru un OVERLAPPED, iar ca al doilea membru date custom. Apoi se poate converti pointerul din OVERLAPPED* in OlExtended* dupa cum convine.
+
+Exemplu:
+struct PodOverlappedExtended {
+    OVERLAPPED ol;
+    int customData;
+}
+
+Atentie! In C structura de mai sus va fi reprezentata in memorie ca si char array-ul de mai sus. In C++ nu este garantat acest lucru, decat daca este o structura POD (plain old data), adica fara constructori, fara inheritance, fara functii virtuale, etc. Daca nu este POD, memory layout-ul nu este garantat.
+
+
+In aplicatie ma folosesc de overlapped de tip raii, care are constructor / destructor, deci nu e POD. Pentru a evita folosirea a doua structuri de date diferite (clasa Raii sa contina o structura POD), ma folosesc de extinderea overlapped-ului cu char array.

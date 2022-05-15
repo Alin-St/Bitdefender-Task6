@@ -1,10 +1,14 @@
 #include "ClientConsole.h"
+#include "../Task6Lib/task6lib.h"
 #include <iostream>
 
 int wmain(int argc, wchar_t* argv[])
 {
-	bool succ = true;
+	
 
+	return 0;
+
+	bool succ = true;
 	try {
 		ClientConsole console;
 		console.run();
