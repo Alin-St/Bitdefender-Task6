@@ -1,0 +1,11 @@
+SHARED MEMORY SERVER
+Se foloseste de un shared memory si doua auto reset event-uri: unul prin care serverul semnaleaza ca un client poate prelua memoria, celelalt prin care clientul semnaleaza ca serverul poate prelua memoria.
+De asemenea, se foloseste si de un thread care asteapta ca al doilea event sa fie semnalat, iar cand e semnalat il adauga la iocp.
+
+In initializare se semnaleaza primul semafor.
+Se foloseste functia wait pentru a astepta pana cand al doilea event e semnalizat.
+
+SHARED MEMORY CLIENT
+
+In initializare se fac rost de handle-luri.
+Se foloseste functia writeData pentru a scrie datele pe shared memory.

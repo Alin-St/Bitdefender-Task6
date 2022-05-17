@@ -1,3 +1,5 @@
+#pragma once
+
 /// <summary> A pipe can be either unconnected, connected or disconnecting. An unconnected pipe can be connecting, a connected pipe
 /// can be reading and / or writing, and a disconnecting pipe can be connecting or (reading and / or writing). </summary>
 enum class PipeState : int

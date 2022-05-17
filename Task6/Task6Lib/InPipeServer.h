@@ -43,6 +43,9 @@ public:
 
 		/// <summary> The new pipe state of the instance that completed the operation. </summary>
 		PipeState newPipeState;
+
+		/// <summary> The operation completed while the instance is trying to disconnect. </summary>
+		bool bZombieOperation;
 	};
 
 private:

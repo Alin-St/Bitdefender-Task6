@@ -19,8 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="controller.h" />
+    <ClInclude Include="controller_options.h" />
     <ClInclude Include="InPipeServer.h" />
+    <ClInclude Include="InSharedMemoryServer.h" />
     <ClInclude Include="OutPipeClient.h" />
+    <ClInclude Include="OutSharedMemoryClient.h" />
     <ClInclude Include="pipes.h" />
     <ClInclude Include="PipeState.h" />
     <ClInclude Include="RaiiCriticalSection.h" />
@@ -32,15 +36,20 @@
     <ClInclude Include="shared_memory.h" />
     <ClInclude Include="sockets.h" />
     <ClInclude Include="SystemException.h" />
+    <ClInclude Include="Task6Client.h" />
     <ClInclude Include="task6lib.h" />
+    <ClInclude Include="Task6Server.h" />
     <ClInclude Include="TcpServer.h" />
     <ClInclude Include="tests.h" />
     <ClInclude Include="utilities.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="controller_options.cpp" />
     <ClCompile Include="InPipeServer.cpp" />
+    <ClCompile Include="InSharedMemoryServer.cpp" />
     <ClCompile Include="OutPipeClient.cpp" />
+    <ClCompile Include="OutSharedMemoryClient.cpp" />
     <ClCompile Include="RaiiCriticalSection.cpp" />
     <ClCompile Include="RaiiHandle.cpp" />
     <ClCompile Include="RaiiHKey.cpp" />
@@ -48,8 +57,11 @@
     <ClCompile Include="RaiiLock.cpp" />
     <ClCompile Include="RaiiOverlapped.cpp" />
     <ClCompile Include="SystemException.cpp" />
+    <ClCompile Include="Task6Client.cpp" />
+    <ClCompile Include="Task6Server.cpp" />
     <ClCompile Include="TcpServer.cpp" />
     <ClCompile Include="test_run_on_startup.cpp" />
+    <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Utility_runOnStartup.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

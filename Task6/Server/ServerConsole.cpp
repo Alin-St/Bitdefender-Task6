@@ -7,6 +7,41 @@ ServerConsole::ServerConsole(const std::wstring& appPath) : applicationPath(appP
 void ServerConsole::run()
 {
 	//uiSetProgramToRunOnStartup();
+
+	this->server = std::make_unique<Task6Server>();
+
+	while (true)
+	{
+		auto timerStart = std::time(nullptr);
+
+		while (true)
+		{
+			int timeout = (int)(timerStart + 10 - std::time(nullptr)) * 1000;
+			if (timeout < 0)
+				break;
+
+			std::string messg;
+			if (this->server->popMessg(timeout, messg))
+				std::cout << messg << '\n';
+			else {
+				std::cout << "Nothing happened.\n";
+				break;
+			}
+		}
+
+		char command = 0;
+		std::cout << "Do you want to continue? (1/ 0): ";
+		std::cin >> command;
+
+		if (command == '0')
+			break;
+		else if (command == '1')
+			continue;
+		else
+			throw std::runtime_error("Invalid command.");
+	}
+
+	this->server->stopAndWait();
 }
 
 void ServerConsole::uiSetProgramToRunOnStartup()

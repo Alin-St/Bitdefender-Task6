@@ -1,0 +1,13 @@
+TASK6 SERVER
+
+Are un iocp + un vector de worker thread-uri responsabil pentru operatiile din cele 3 tipuri de server.
+Are un vector de buffere, in care primeste messajele de la clienti.
+Are un sistem de logging, format dintr-un queue (+ crit sec. + semafor), unde worker thread-urile pun mesaje care descriu activitatea de pe server.
+Are un shutdown event, care cand este signaled inseamna ca se vrea sa se inchida tot.
+
+Cand se initializeaza serverul, se incepe conectarea cu clientii si se pornesc worker thread-urile. Dupa initializare, este in stadiu de functionare autonoma si va posta mesaje care descriu activitaeta in log queue.
+
+TASK6 CLIENT
+
+Initializarea nu se ocupa de conectare.
+Dupa initializare se poate apela functia de trimitere date, unde este specificat in ce mod se vor trimite. Dupa apelarea functiei clientul va incepe sa trimita date asincron, dar este nevoie de apel

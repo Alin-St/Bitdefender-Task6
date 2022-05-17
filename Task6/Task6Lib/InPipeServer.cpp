@@ -151,12 +151,12 @@ void InPipeServer::service(OVERLAPPED* lpOverlapped, DWORD bytesTransferred, DWO
 	{
 	case PipeState::_UNCONNECTED_CONNECTING:
 		pipe.state = PipeState::CONNECTED;
-		result = { index, AsyncResult::Operation::CONNECT, errorCode, 0, pipe.state };
+		result = { index, AsyncResult::Operation::CONNECT, errorCode, 0, pipe.state, false };
 		break;
 
 	case PipeState::_CONNECTED_READING:
 		pipe.state = PipeState::CONNECTED;
-		result = { index, AsyncResult::Operation::READ, errorCode, bytesTransferred, pipe.state };
+		result = { index, AsyncResult::Operation::READ, errorCode, bytesTransferred, pipe.state, false };
 		break;
 
 	case PipeState::_DISCONNECTING_CONNECTING:
@@ -167,12 +167,12 @@ void InPipeServer::service(OVERLAPPED* lpOverlapped, DWORD bytesTransferred, DWO
 		}
 
 		pipe.state = PipeState::UNCONNECTED;
-		result = { index, AsyncResult::Operation::READ, errorCode, 0, pipe.state };
+		result = { index, AsyncResult::Operation::READ, errorCode, 0, pipe.state, true };
 		break;
 
 	case PipeState::_DISCONNECTING_READING:
 		pipe.state = PipeState::UNCONNECTED;
-		result = { index, AsyncResult::Operation::READ, errorCode, bytesTransferred, pipe.state };
+		result = { index, AsyncResult::Operation::READ, errorCode, bytesTransferred, pipe.state, true };
 		break;
 
 	default:

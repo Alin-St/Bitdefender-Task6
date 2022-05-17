@@ -53,6 +53,7 @@ void OutPipeClient::open(const std::string& pipeName)
 	if (hPipe == INVALID_HANDLE_VALUE)
 		throw SystemException(GetLastError());
 
+	this->hPipe = hPipe;
 	this->state = PipeState::CONNECTED;
 }
 

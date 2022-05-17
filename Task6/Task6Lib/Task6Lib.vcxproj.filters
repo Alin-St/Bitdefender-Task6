@@ -46,6 +46,15 @@
     <Filter Include="tests\Sources">
       <UniqueIdentifier>{0a4c75bd-d33c-4481-a57e-99db452815f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="controller">
+      <UniqueIdentifier>{16719b4a-3e0c-4509-a337-dd551649cbbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controller\Headers">
+      <UniqueIdentifier>{164ce012-5c13-4e40-99c8-f9b900832eb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="controller\Sources">
+      <UniqueIdentifier>{deb6889e-1c56-4d77-843e-78bc19fc3f69}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="task6lib.h" />
@@ -100,6 +109,24 @@
     <ClInclude Include="RaiiOverlapped.h">
       <Filter>utilities\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="controller.h">
+      <Filter>controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Task6Server.h">
+      <Filter>controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Task6Client.h">
+      <Filter>controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="controller_options.h">
+      <Filter>controller\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InSharedMemoryServer.h">
+      <Filter>shared_memory\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OutSharedMemoryClient.h">
+      <Filter>shared_memory\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TcpServer.cpp">
@@ -137,6 +164,24 @@
     </ClCompile>
     <ClCompile Include="RaiiOverlapped.cpp">
       <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Task6Server.cpp">
+      <Filter>controller\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Task6Client.cpp">
+      <Filter>controller\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>utilities\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="controller_options.cpp">
+      <Filter>controller\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="OutSharedMemoryClient.cpp">
+      <Filter>shared_memory\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="InSharedMemoryServer.cpp">
+      <Filter>shared_memory\Sources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

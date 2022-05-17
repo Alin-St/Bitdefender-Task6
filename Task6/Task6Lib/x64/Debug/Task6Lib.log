@@ -1,16 +1,4 @@
-﻿  InPipeServer.cpp
-  OutPipeClient.cpp
-  PipeClient.cpp
-  PipeServer.cpp
-  RaiiCriticalSection.cpp
-  RaiiHandle.cpp
-  RaiiHKey.cpp
-  RaiiIndexedOverlapped.cpp
-  RaiiLock.cpp
-  RaiiOverlapped.cpp
-  SystemException.cpp
-  TcpServer.cpp
-  test_run_on_startup.cpp
-  Utility_runOnStartup.cpp
+﻿  OutSharedMemoryClient.cpp
+  Task6Client.cpp
   Generating Code...
   Task6Lib.vcxproj -> C:\Users\gstanciu\Alin\Projects\task6\Task6\x64\Debug\Task6Lib.lib
